@@ -1,49 +1,58 @@
-
+from typing import Any
 class Array:
     def __init__(self, *items) -> None:
         self.items = []
         self.size = 0
         self.populate(items)
     
-    def populate(self, items) -> None:
+    def populate(self, items:list[Any]) -> None:
         for item in items:
             self.push(item)
 
     def capacity(self) -> int:
-        return 512
+        return 1024
 
     def is_empty(self) -> bool:
         return self.size > 0
 
-    def at(self, index: int):
+    def at(self, index: int) -> Any:
         if index > 1023:
             raise IndexError("Index is out of array length limit, the limit is 1024 items")
         elif index > self.size - 1:
             raise IndexError(f"Index is out of array current length, there are {self.size} items")
         else:
-            return self.items[index]
+            for item_index, item in enumerate(self.items):
+                if item_index == index:
+                    return item
     
     def print_items(self) -> None:
         for i in range(self.size):
             print(self.at(i))
 
-    def push(self, item) -> None:
+    def push(self, item:Any) -> None:
         self.items += [item]
         self.size += 1
     
-    def insert(self, item, index) -> None:
+    def insert(self, item:Any, index:int) -> None:
         if index > self.size - 1:
             raise IndexError(f"Index is out of array current length, there are {self.size} items")
         elif index == self.size:
             self.push(item)
-        elif index < 0:
+        elif index <= 0:
             self.prepend(item)
         else:
-            pass
+            self.items =  self.items[:index] + [item] + self.items[index:]
 
-    
-    def prepend(self, item) -> None:
+    def prepend(self, item:Any) -> None:
         self.items = [item] + self.items
+
+    def pop(self) -> Any:
+        temp = self.items[-1]
+        self.items = self.items[:self.size-1]
+        return temp
+
+    def delete(self, index:int) -> None:
+        pass
 
 
 test = Array(1,2,3,4,5)
