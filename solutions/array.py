@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Union
 class Array:
     def __init__(self, *items) -> None:
         self.items = []
@@ -42,17 +42,33 @@ class Array:
             self.prepend(item)
         else:
             self.items =  self.items[:index] + [item] + self.items[index:]
+            self.size += 1
 
     def prepend(self, item:Any) -> None:
         self.items = [item] + self.items
+        self.size += 1
 
     def pop(self) -> Any:
         temp = self.items[-1]
         self.items = self.items[:self.size-1]
+        self.size -= 1
         return temp
 
-    def delete(self, index:int) -> None:
+    def delete(self, index: int) -> None:
         pass
+
+    def remove(self, item: Any) -> None:
+        for index, items_item in enumerate(self.items):
+            if items_item == item:
+                self.delete(index)
+    
+    def find(self, item: Any) -> Union[Any, int]:
+        for index, items_item in enumerate(self.items):
+            if items_item == item:
+                return index
+    
+    def _resize(self, new_capacity: int) -> None:
+        self.size = new_capacity
 
 
 test = Array(1,2,3,4,5)
