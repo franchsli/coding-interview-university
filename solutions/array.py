@@ -3,27 +3,26 @@ class Array:
     def __init__(self, *items) -> None:
         self.items = []
         self.size = 0
+        self.capacity = 1024
         self.populate(items)
     
     def populate(self, items:list[Any]) -> None:
         for item in items:
             self.push(item)
 
-    def capacity(self) -> int:
-        return 1024
 
     def is_empty(self) -> bool:
         return self.size > 0
 
     def at(self, index: int) -> Any:
-        if index > 1023:
-            raise IndexError("Index is out of array length limit, the limit is 1024 items")
+        if index > self.capacity - 1:
+            self._resize(self.capacity * 2)
         elif index > self.size - 1:
             raise IndexError(f"Index is out of array current length, there are {self.size} items")
-        else:
-            for item_index, item in enumerate(self.items):
-                if item_index == index:
-                    return item
+        
+        for item_index, item in enumerate(self.items):
+            if item_index == index:
+                return item
     
     def print_items(self) -> None:
         for i in range(self.size):
@@ -52,23 +51,33 @@ class Array:
         temp = self.items[-1]
         self.items = self.items[:self.size-1]
         self.size -= 1
+        if self.size == (self.capacity // 4):
+            self._resize(self.capacity // 2)
         return temp
 
     def delete(self, index: int) -> None:
-        pass
+        result = Array()
+        for i, item in enumerate(self.items):
+            if i != index:
+                result.push(item)
+        self.items = result
+        self.size -= 1
+        del result
 
     def remove(self, item: Any) -> None:
         for index, items_item in enumerate(self.items):
             if items_item == item:
                 self.delete(index)
     
-    def find(self, item: Any) -> Union[Any, int]:
+    def find(self, item: Any) -> int:
         for index, items_item in enumerate(self.items):
             if items_item == item:
                 return index
+        else:
+            return -1
     
     def _resize(self, new_capacity: int) -> None:
-        self.size = new_capacity
+        self.capacity = new_capacity
 
 
 test = Array(1,2,3,4,5)
