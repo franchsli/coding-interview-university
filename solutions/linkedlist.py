@@ -128,5 +128,89 @@ class LinkedList:
 
             new_node = Node(value, pointer.next)
             pointer.next = new_node
-            self.set_size(self.size + 1)    
+            self.set_size(self.size + 1)
+
+    def erase(self, index: int) -> Union[None, Exception]:
+        if self.is_empty():
+            raise Exception("The linked list is empty")
+
+        elif self.size < index + 1:
+            raise IndexError(f"The given index is bigger than the Linked List")
+
+        elif index == self.size - 1:
+            self.pop_back()
+
+        elif index == 0:
+            self.pop_front()
+
+        else:
+            pointer = self.head
+            counter = 0
+            while counter < index - 1:
+                pointer = pointer.next
+                counter += 1
+            pointer.next = pointer.next.next
+
+
+    def value_n_from_end(self, n: int) -> Union[Any, Exception]:
+        if self.is_empty():
+            raise Exception("The linked list is empty")
+
+        elif self.size < n:
+            raise IndexError(f"The given number is bigger than the Linked List")
+        
+        n = self.size - n
+        counter = 0
+        pointer = self.head
+        while counter != n:
+            pointer = pointer.next
+            counter += 1
+        
+        return pointer.value
+    
+    def reverse(self) -> None:
+        if self.is_empty():
+            raise Exception("The linked list is empty")
+        
+        temp_linked_list = LinkedList()
+        pointer = self.head
+        while pointer.next:
+            temp_linked_list.push_front(pointer.value)
+            pointer = pointer.next
+    
+    def remove_value(self, value: Any) -> None:
+        if self.is_empty():
+            raise Exception("The linked list is empty")
+        
+        pointer = self.head 
+        while pointer.next:
+            if pointer.next.value != value:
+                pointer = pointer.next
+            else:
+                break
+        pointer.next = pointer.next.next
+
+    
+
+    def print_list(self) -> None:
+        pointer = self.head
+        while pointer.next:
+            print(pointer.value)
+            pointer = pointer.next
+        print(pointer)
+    
+
+a = Node(1)
+b = Node(2)
+a.next = b
+test = LinkedList(a)
+test.reverse()
+test.print_list()
+            
+
+
+
+        
+              
+
   
