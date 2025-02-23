@@ -11,12 +11,21 @@ class LinkedList:
     def __init__(self, head: Node = None):
         self.head = head
         self._size: int = 0
+        self.populate()
+    
+    def populate(self) -> None:
+        pointer = self.head
+        counter = 0
+        while pointer:
+            counter += 1
+            pointer = pointer.next
+        self.set_size(counter)
+        
 
     @property
     def size(self) -> int:
         return self._size
 
-    @size.setter
     def set_size(self, new_size: int) -> None:
         self._size = new_size
 
@@ -174,9 +183,12 @@ class LinkedList:
         
         temp_linked_list = LinkedList()
         pointer = self.head
-        while pointer.next:
+        while pointer:
             temp_linked_list.push_front(pointer.value)
             pointer = pointer.next
+        self.head = temp_linked_list.head
+        del temp_linked_list
+        del pointer
     
     def remove_value(self, value: Any) -> None:
         if self.is_empty():
@@ -194,10 +206,9 @@ class LinkedList:
 
     def print_list(self) -> None:
         pointer = self.head
-        while pointer.next:
+        while pointer:
             print(pointer.value)
             pointer = pointer.next
-        print(pointer)
     
 
 a = Node(1)
