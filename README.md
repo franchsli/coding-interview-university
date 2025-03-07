@@ -697,12 +697,12 @@ if you can identify the runtime complexity of different algorithms. It's a super
     - enqueue(value) - adds value at a position at the tail
     - dequeue() - returns value and removes least recently added element (front)
     - empty()
-  - [ ] Implement using a fixed-size array:
+  - [x] Implement using a fixed-size array:
     - enqueue(value) - adds item at end of available storage
     - dequeue() - returns value and removes least recently added element
     - empty()
     - full()
-  - [ ] Cost:
+  - [x] Cost:
     - a bad implementation using a linked list where you enqueue at the head and dequeue at the tail would be O(n)
             because you'd need the next to last element, causing a full traversal of each dequeue
     - enqueue: O(1) (amortized, linked list and array [probing])
