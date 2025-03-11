@@ -352,7 +352,7 @@ Just choose one, in a language that you will be comfortable with. You'll be doin
   - An insider’s perspective on what interviewers are truly looking for and why.
   - 101 real coding interview problems with detailed solutions.
   - Intuitive explanations that guide you through each problem as if you were solving it in a live interview.
-  - 1000+ diagrams to illustrate key concepts and patterns. 
+  - 1000+ diagrams to illustrate key concepts and patterns.
 
 ### C
 
@@ -1589,8 +1589,8 @@ You're never really done.
       - [Emacs Tutorial (Beginners) -Part 3- Expressions, Statements, ~/.emacs file, and packages](https://www.youtube.com/watch?v=paSgzPso-yc)
     - [Evil Mode: Or, How I Learned to Stop Worrying and Love Emacs (video)](https://www.youtube.com/watch?v=JWD1Fpdd4Pc)
     - [Writing C Programs With Emacs](http://www.cs.yale.edu/homes/aspnes/classes/223/notes.html#Writing_C_programs_with_Emacs)
- 	- [The Absolute Beginner's Guide to Emacs (video by David Wilson)](https://www.youtube.com/watch?v=48JlgiBpw_I&t=0s)
- 	- [The Absolute Beginner's Guide to Emacs (notes by David Wilson)](https://systemcrafters.net/emacs-essentials/absolute-beginners-guide-to-emacs/)
+    - [The Absolute Beginner's Guide to Emacs (video by David Wilson)](https://www.youtube.com/watch?v=48JlgiBpw_I&t=0s)
+    - [The Absolute Beginner's Guide to Emacs (notes by David Wilson)](https://systemcrafters.net/emacs-essentials/absolute-beginners-guide-to-emacs/)
 
 - ### Unix/Linux command line tools
 

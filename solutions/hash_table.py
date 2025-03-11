@@ -19,4 +19,3 @@ class HashTable:
     
     def exists(self, key) -> bool:
         return self.table[self.hash(key)] != None
-        
